@@ -1,0 +1,210 @@
+:root {
+  /* backgrounds */
+  --bg: #eeedf5;
+  --surface: #eeedf5;
+  --topbar: #d7d7e0;
+
+  --bg-dark: #232324;
+  --surface-dark: #202020;
+  --topbar-dark: #282829;
+
+  /* txt */
+  --text-dark: #232324;
+  --text-light: #d7d7e0;
+
+  /* buttons */
+  --button-ink: #17231f;
+  --button-gold: #e6b85c;
+  --button-gold-light: #f7d98d;
+  --button-red: #b94b4b;
+}
+
+@font-face {
+    font-family: "Cormorant Garamond";
+    src: url("fonts/CormorantGaramond-Italic-VariableFont_wght.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+}
+.main-body {
+  background-color: var(--bg);
+  margin: 0;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.top-bar-container {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: 1;
+  height: 5%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.website-title-h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: white;
+}
+
+.website-icon {
+  width: 2%;
+  height: 2%;
+}
+
+.ventti-container {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  height: 80vh;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.ventti-grid-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.op-cards {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.my-cards {
+  grid-column: 2;
+  grid-row: 2;
+  visibility: hidden;
+}
+
+.hit-cards {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.hit-button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--button-gold-light);
+  outline-offset: 4px;
+}
+
+button.game-action-button {
+  position: relative;
+  min-width: 8.5rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(255, 239, 190, 0.55);
+  border-radius: 0.6rem;
+  background: linear-gradient(145deg, var(--button-gold-light), var(--button-gold));
+  box-shadow: 0 5px 0 #a47729, 0 10px 18px rgba(16, 25, 21, 0.28);
+  color: var(--button-ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.35);
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+
+button.game-action-button:hover:not(:disabled) {
+  filter: brightness(1.06) saturate(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 #a47729, 0 13px 22px rgba(16, 25, 21, 0.3);
+}
+
+button.game-action-button:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #a47729, 0 5px 10px rgba(16, 25, 21, 0.25);
+}
+
+button.game-action-button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.45);
+  opacity: 0.50;
+}
+
+.hit-button {
+  min-width: 9rem;
+  min-height: 13rem;
+  justify-content: center;
+  padding: 0.7rem;
+}
+
+.hit-button playing-card {
+  width: 120px;
+  height: 168px;
+  box-shadow: 0 2px 5px rgba(16, 25, 21, 0.3);
+}
+
+.stand-button {
+  background: linear-gradient(145deg, #db7370, var(--button-red));
+  box-shadow: 0 5px 0 #813636, 0 10px 18px rgba(16, 25, 21, 0.28);
+  color: #fff8ed;
+}
+
+.stand-button:hover:not(:disabled) {
+  box-shadow: 0 7px 0 #813636, 0 13px 22px rgba(16, 25, 21, 0.3);
+}
+
+.stand-button:active:not(:disabled) {
+  box-shadow: 0 2px 0 #813636, 0 5px 10px rgba(16, 25, 21, 0.25);
+}
+
+.bet-cards {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+.card-area {
+  display: flex;
+  gap: 5px;
+}
+
+.card-value-text {
+  color: white;
+}
+
+playing-card {
+  display: inline-block;
+  width: 120px;
+  height: 168px;
+  vertical-align: middle;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.205);
+  border-radius: 5px;
+}
+
+playing-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+
+}

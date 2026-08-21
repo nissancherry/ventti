@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventti | Gamble your life savings away with a Finnish card game</title> <!--remove or I will buy seashells from the seashore. Please use ctrl F-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icons/favicon.png">
+</head>
+<body class="main-body">
+  <header class="top-bar-container"> 
+    <h1 class="website-title-h1">
+      Ventti
+      <img src="icons/website-logo.svg" alt="" class="website-icon">
+    </h1>
+    <button class="theme-toggle-button" aria-label="Toggle dark/light mode">
+      D/L
+    </button>
+  </header>
+
+  <main class="ventti-container">
+
+    <div class="hit-cards ventti-grid-style">
+      <button class="hit-button game-action-button">
+        <playing-card suit=0 rank=0 class="hit-playing-card-img"></playing-card>
+        <span class="game-action-button">Hit</span>
+      </button>
+    </div>
+
+    <div class="op-cards ventti-grid-style">
+      <div class="card-area op-card-area" aria-label="Opponent card area">
+      </div>
+      <span class="op-card-value card-value-text"></span>
+    </div>
+
+    <div class="my-cards ventti-grid-style">
+      <span class="my-card-value card-value-text"></span>
+      <div class="card-area my-card-area" aria-label="Player card area">
+
+      </div>
+      <button class="stand-button game-action-button">Stand</button>
+    </div>
+
+    <div class="bet-cards ventti-grid-style"> <!--presumably a future update with betting sys. not needed rn-->
+      
+    </div>
+  </main>
+  <script src="elements.cardmeister.full.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
