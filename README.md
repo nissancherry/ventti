@@ -1,2 +1,2 @@
 # ventti
-Online ventti game
+Online ventti game | work in progress
