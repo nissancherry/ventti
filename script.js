@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ----- document -----
+  // ----- vars -----
 
   const my_card_area = document.querySelector('.my-card-area');
   const op_card_area = document.querySelector('.op-card-area');
@@ -8,15 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const op_card_value = document.querySelector('.op-card-value');
   const stand_button = document.querySelector('.stand-button')
   const hit_button = document.querySelector('.hit-button')
+  let game_stage = 0 //-- 0=pre-hit (no cards), 1=cards-dealt (player hit/stand), 2=player hits, 3=ai-turn
 
-
-  // ----- kurwa yebana -----
-
-  let game_stage = 0 //-- 0=pre-hit (no cards), 1=cards-dealt (player hit/stand), 2=ai-turn, 3=game-end (reset)
-
-  console.log(game_stage)
-
-  // ----- bullshit -----
+  // ----- card data -----
 
   const cards = {
     cardValues: {
@@ -59,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!already_drawn_cards.includes(card_id)) {
           already_drawn_cards.push(card_id);
-          console.log(already_drawn_cards);
           return card;
       }
     };
@@ -76,10 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card3 = random_card();
 
       my_cards.push(card, card2);
-      console.log(my_cards, " -- minu kaardid on sellised")
-
       op_cards.push(card3)
-      console.log(op_cards, " -- vastase kaardid on vot sellised")
 
     } else if (game_stage === 2) {
       my_cards.push(card);
@@ -125,8 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
       stand_button.disabled = false;
 
       game_stage = 0;
-
-      console.log(my_cards);
     }, 1500);
   }
 
@@ -152,12 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hit();
         let value = count_card_value(my_cards);
 
-        console.log(my_cards);
-        console.log("HHHHHHHHHHHHHHHHH");
-        console.log(op_cards);
-
-        console.log("väärtus on mul vorstiviilud: ", value);
-
         if (value > 21) {
           console.log('you lost');
           restart_game();
@@ -168,22 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
           game_stage = 2;
         }
 
-      } else if (game_stage === 2) { // kuna võimatu on näha siis siin algab after esimest drawi
+      } else if (game_stage === 2) {
 
         hit();
         let value = count_card_value(my_cards);
-
-        console.log(my_cards);
-        console.log("HHHHHHHHHHHHHHHHH");
-        console.log(op_cards);
-
-        console.log("väärtus on mul vorstiviilud: ", value);
-
+        
         if (value > 21) {
-          console.log('you lost');
+          console.log('plr lost');
           restart_game();
         } else if (value === 21) {
-          console.log('you won');
+          console.log('plr won');
           restart_game();
         }
       } else if (game_stage === 3) {
@@ -196,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.closest('.stand-button')) {
 
       stand_button.disabled = true;
-      hit_button.disabled = true
+      hit_button.disabled = true;
 
       if (game_stage === 2) {
 
@@ -211,17 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
           hit();
           op_value = count_card_value(op_cards);
 
-          console.log(my_cards);
-          console.log("HHHHHHHHHHHHHHHHH");
-          console.log(op_cards);
-          console.log("väärtus on tal vorstiviilud: ", op_value);
-
           if (op_value > 21) {
-            console.log('you win cuz ai >21');
+            console.log('plr win, ai >21');
             restart_game();
             break;
           } else if (op_value === 21 || op_value > my_value) {
-            console.log('you lost');
+            console.log('plr lost');
             restart_game();
             break;
           }
